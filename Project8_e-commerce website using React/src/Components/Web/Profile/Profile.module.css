@@ -1,5 +1,5 @@
 .profile{
-    background-color: aquamarine;
+    background-color: rgb(149, 206, 220);
     display: flex;
     gap:50px;
     height:100;
@@ -11,7 +11,7 @@
     flex-grow: 1;
 } */
 .profileLinks nav{
-    background-color: brown;
+    background-color: rgb(5, 2, 40);
     height:100vh;
     display: flex;
     flex-direction: column;

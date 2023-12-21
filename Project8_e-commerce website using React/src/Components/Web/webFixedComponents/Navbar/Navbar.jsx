@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext.jsx";
 import { UserContext } from "../../Context/UserContext.jsx";
-import { useState,useEffect } from "react";
+import './Navbar.css';
 
 export default function Navbar() {
   let {userDetails,setUserDetails}=useContext(UserContext);
   const { userTokenContext, setUserTokenContext } = useContext(UserContext);
-
+console.log(userDetails,'useeeeeeeeeeeeee');
 
 // let {getCartContext}=useContext(CartContext);
 // let [cartCount,setCartCount]=useState();
@@ -32,9 +32,9 @@ let {count,setCount}=useContext(CartContext);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <Link className="navbar-brand" to="/home">
+        <Link className="navbar-brand fs-3" to="/">
           T-shop
         </Link>
         <button
@@ -48,26 +48,26 @@ let {count,setCount}=useContext(CartContext);
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse w-25" id="navbarNavDropdown">
           <ul className="navbar-nav m-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link fs-5">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/categories" className="nav-link">
+              <Link to="/categories" className="nav-link fs-5">
                 Categories
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/products" className="nav-link">
+              <Link to={`/products?page=1`} className="nav-link fs-5">
                 Products
               </Link>
             </li>
             {userTokenContext ? (
               <li className="nav-item">
-                <Link to="/cart" className="nav-link cart">
+                <Link to="/cart" className="nav-link cart fs-5">
                   Cart <span className="badge bg-info">{count} </span>
                 
                 </Link>
@@ -76,7 +76,7 @@ let {count,setCount}=useContext(CartContext);
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item dropdown">
-              <a
+              <div
                 className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
@@ -86,11 +86,18 @@ let {count,setCount}=useContext(CartContext);
 
 {
   userDetails?.userName?
-               userDetails.userName
+  <Link className="d-flex user-profile-info" to='/profile' >
+ 
+ <div className="profile-img me-2 d-flex align-items-center">
+  <img src={userDetails.image.secure_url} className='img-fluid rounded-circle'/>
+  </div>
+  <p className="fs-5">{userDetails.userName}</p>
+  </Link>
 :
 'Account'
 }
-              </a>
+
+              </div>
               <ul className="dropdown-menu">
                 {!userTokenContext ? (
                   <>

@@ -9,8 +9,27 @@ export default function UserContact() {
        }
   return (
     <>
-    <h2>{userDetails.email}</h2>
-    <h2>{userDetails.phone?userDetails.phone:'phone number was not provided'}</h2>
+    <table className="table p-5 border border-dark">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" className="px-5 py-3 border border-dark">User Email</th>
+      <td className="px-5 py-3 border border-dark"><h6>{userDetails.email}</h6></td>
+
+    </tr>
+    <tr>
+      <th scope="row" className="px-5 py-3 border border-dark">User Phone</th>
+      <td className="px-5 py-3 border border-dark"> {userDetails.phone?userDetails.phone:'phone number was not provided'} </td>
+ 
+    </tr>
+
+    
+  </tbody>
+</table>
+
+
+
     </>
   )
 }

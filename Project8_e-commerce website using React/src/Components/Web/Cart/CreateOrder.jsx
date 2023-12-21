@@ -9,6 +9,8 @@ import { useFormik } from "formik";
 import "./Cart.css";
 import Input from "../../Shared/Input.jsx";
 import axios from "axios";
+import './CreateOrder.css'
+
 const initialValues = {
   couponName: "",
   address: "",
@@ -108,36 +110,56 @@ return sum;
       <div className="container">
         <div className="row">
           <div className="cart-items">
-            <div className="products w-75" id="products">
-              <div className="item">
-                <div className="product-info">
+          <div className="products p-3 " id="products">
+              <div className="item ">
+                <div className="product-info create ">
                   <h2>Product</h2>
                 </div>
                 <div className="quantity">
                   <h2>Quantity</h2>
                 </div>
                 <div className="price">
-                  <h2>Price</h2>
+                  <h2>Price($)</h2>
                 </div>
                 <div className="subtotal">
-                  <h2>Subtotal</h2>
+                  <h2>Subtotal($)</h2>
                 </div>
               </div>
 
-              {data?.products ? (
+              {data?.products? (
                 data?.products.map((product) => {
                   return (
-                    <div className="item" key={product.details._id}>
-                      <div className="product-info">
-                        <img src={product.details.mainImage.secure_url} />
-                        <div className="product-details">
+                    <div className="item bg-success p-3 text-white" key={product.details._id}>
+                      <div className="product-info ">
+                        <div className="img-container-cart">
+                        <img src={product.details.mainImage.secure_url} className='img-fluid' />
+                        </div>
+                        <div className="product-detailss">
                           <h2>{product.details.name}</h2>
-                          <span>Color:black</span>
+                         
+
+                          <button className="bg-danger text-white"
+                            onClick={() => removeItem(product.details._id)}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={24}
+                              height={25}
+                              viewBox="0 0 24 25"
+                              fill="none"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M5.29289 5.79289C5.68342 5.40237 6.31658 5.40237 6.70711 5.79289L12 11.0858L17.2929 5.79289C17.6834 5.40237 18.3166 5.40237 18.7071 5.79289C19.0976 6.18342 19.0976 6.81658 18.7071 7.20711L13.4142 12.5L18.7071 17.7929C19.0976 18.1834 19.0976 18.8166 18.7071 19.2071C18.3166 19.5976 17.6834 19.5976 17.2929 19.2071L12 13.9142L6.70711 19.2071C6.31658 19.5976 5.68342 19.5976 5.29289 19.2071C4.90237 18.8166 4.90237 18.1834 5.29289 17.7929L10.5858 12.5L5.29289 7.20711C4.90237 6.81658 4.90237 6.18342 5.29289 5.79289Z"
+                                fill="#fff"
+                              />
+                            </svg>
+                            remove
+                          </button>
                         </div>
                       </div>
-                      <div className="quantity">
-                        <span>{product.quantity}</span>
-                      </div>
+         
                       <div className="price">{product.details.finalPrice}</div>
                       <div className="subtotal">
                         {product.details.finalPrice * product.quantity}
@@ -146,11 +168,11 @@ return sum;
                   );
                 })
               ) : (
-                <h2> Cart is empty ...</h2>
+                <h2 className=" text-danger fs-1 w-75 p-5"> Cart is empty .......</h2>
               )}
             </div>
 
-            <div className="cart-summary">
+            <div className="cart-summary-order p-3">
               <h2>Required Information</h2>
               <div className="summery-items">
                 <div className="summary-item py-3">

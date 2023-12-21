@@ -19,27 +19,41 @@ if(isLoading){
   return <h2> loading.................</h2>
 }
   return (
-    <div className='container mt-5'>
-      <div className='row g-5 text-center'>
+    <div className='container mt-5 bg-success py-4'>
+      <div className='d-flex text-center column-gap-3'>
 {
         data.products.length>0?data.products.map((product,index)=>{
           return(
            
-            <div className='col-lg-4' key={index}>
-               <Link to={`/products/${product._id}`}>
-              <h2 className='mb-5 text-black'>{product.name}</h2>          
-              <div className='imgContainer w-75 h-75'>
-              <img src={product.mainImage.secure_url} className='img-fluid'/>
+            <div className="product-cardd rounded-4 ">
+                <div className="product-itemm  bg-white rounded-4 d-flex flex-column  justify-content-center align-items-center" key={index}>
+                <h2 className="mb-5 text-black fs-5 rounded-2 p-2">{product.name}</h2>
+                <div className="imgContainerr rounded-circle">
+                  <img src={product.mainImage.secure_url} className=" rounded-circle" />
+                </div>
+                {/* <div className='price bg-success w-25 h-25'> */}
+                <h2 className="product-price mt-4 text-black fs-5 p-3 rounded-4">Price: ${product.price}</h2>
+                {/* </div> */}
+                <div className="details d-flex text-align-center justify-content-center  mt-4 w-100 ">
+                  <Link
+                    className="product-detail bg-info p-2 rounded-2 w-100 fs-5"
+                    to={`/products/${product._id}`}
+                  >
+                    details
+                  </Link>
+                </div>
               </div>
-     
-              </Link>
-            </div>
+
+              </div>
           
 
           )
         })
         :
-        <h2> no products for this category</h2>
+        <div>
+        <h2 className='bg-danger p-5 text-white'> Currently,no products available for this category....</h2>
+        <p className='bg-danger p-5 text-white fs-5'> Products are currently availble for the following categories : Home&Kitchen and (أزياء الرجال)</p>
+        </div>
       }
       </div>
     </div>

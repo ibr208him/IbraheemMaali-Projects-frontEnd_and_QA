@@ -39,7 +39,7 @@ export default function Login() {
       type: "email",
       name: "email",
       id: "email",
-      title: "User Email",
+      title: "Email address",
       onChange: formik.handleChange,
       value: formik.values.email,
     },
@@ -47,10 +47,12 @@ export default function Login() {
   ];
 
   return (
-    <div className="container">
-      <h2 className="mb-5">Reset Password</h2>
-      <p className="text-danger fs-4">Once you click on Submit button,You will get a code in your email address entered below</p>
-      <form onSubmit={formik.handleSubmit}>
+ <div className="sendCode-page bg-dark">
+     <div className="container">
+      <h2 className="mb-5 text-white pt-3">Reset Password</h2>
+      <p className="text-danger fs-5 ">Please entered your registered email address.</p>
+      <p className="text-danger fs-5 ">Once you click on Submit button,You will receive a code in your email address</p>
+      <form onSubmit={formik.handleSubmit} className='py-5'>
 
         {inputProps.map((inputProp, index) => {
           return (
@@ -65,13 +67,15 @@ export default function Login() {
               errors={formik.errors}
               touched={formik.touched}
               onBlur={formik.handleBlur}
+            
             />
           );
         })}
-        <button type="submit" disabled={Object.keys(formik.errors).length > 0}>
+        <button className='rounded-2 p-2 bg-success text-white fw-bold' type="submit " disabled={Object.keys(formik.errors).length > 0}>
           Submit
         </button>
       </form>
     </div>
+ </div>
   );
 }

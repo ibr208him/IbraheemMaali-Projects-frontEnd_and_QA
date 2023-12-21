@@ -77,35 +77,35 @@ export default function SetPassword() {
   ];
 
   return (
+
+    <div className="setPassword-page bg-dark">
     <div className="container">
-      <h2 className="mb-5">Set Password</h2>
-      <p className="text-danger fs-4">Enter the code received in your email along with the new password</p>
-      <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
-        {" "}
-        {inputProps.map((inputProp, index) => {
-          return (
-            <Input
-              type={inputProp.type}
-              name={inputProp.name}
-              id={inputProp.id}
-              title={inputProp.title}
-              key={index}
-              value={inputProp.value}
-              onChange={inputProp.onChange}
-              errors={formik.errors}
-              touched={formik.touched}
-              onBlur={formik.handleBlur}
-            />
-          );
-        })}
-        {/* <button type='submit' disabled={Object.keys(formik.errors).length>0}>Register</button> */}
-        {/* <button type='submit' disabled={!formik.isValid}>Register</button> */}
-        {/* <input type='submit' disabled={!formik.isValid}/> */}
-        <button type="submit" disabled={Object.keys(formik.errors).length > 0}>
+     <h2 className="mb-5 text-white pt-3">Reset Password</h2>
+     <p className="text-danger fs-5 ">Please enter the code received in your email along with the new password</p>
+     <form onSubmit={formik.handleSubmit} className='py-5'>
+
+       {inputProps.map((inputProp, index) => {
+         return (
+           <Input
+             type={inputProp.type}
+             name={inputProp.name}
+             id={inputProp.id}
+             title={inputProp.title}
+             key={index}
+             value={inputProp.value}
+             onChange={inputProp.onChange}
+             errors={formik.errors}
+             touched={formik.touched}
+             onBlur={formik.handleBlur}
+           
+           />
+         );
+       })}
+       <button className='rounded-2 p-2 bg-success text-white fw-bold' type="submit " disabled={Object.keys(formik.errors).length > 0}>
          Submit
-        </button>
-     
-      </form>
-    </div>
+       </button>
+     </form>
+   </div>
+</div>
   );
 }

@@ -19,10 +19,13 @@ import UserInfo from "../Components/Web/Profile/UserInfo.jsx";
 import UserContact from "../Components/Web/Profile/UserContact.jsx";
 import CreateOrder from "../Components/Web/Cart/CreateOrder.jsx";
 import GetOrder from "../Components/Web/Profile/GetOrder.jsx";
+import Products from "../Components/Web/Products/Products.jsx";
 
 
 export const router = createBrowserRouter([
+  // we put the router inside the APP function to be children of APP,so that from here we can send the token to any components
 
+  // web routes
   {
     path: "/",
     element: <Layout />,
@@ -32,7 +35,8 @@ export const router = createBrowserRouter([
         // path:'/',
         element: <Home />,
       },
-      {
+      { 
+        
         path: "/products/category/:id",
         element: <CategoryProducts />,
       },
@@ -40,6 +44,12 @@ export const router = createBrowserRouter([
         path: "categories",
         element: <Categories />,
       },
+      {
+        path: "/products",
+        element: <Products />,
+      
+      },
+
       {
         path: "/products/:id",
         element: <ProductDetails />,

@@ -26,7 +26,7 @@ export default function Profile() {
     </nav>
   </div>
 
-   <div className={`${style.userData} m-auto`}>
+   <div className={`${style.userData} m-5`}>
    <Outlet/>
 
 

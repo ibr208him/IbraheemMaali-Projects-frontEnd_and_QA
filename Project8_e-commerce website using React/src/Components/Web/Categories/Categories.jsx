@@ -9,6 +9,10 @@ import 'swiper/css/scrollbar';
 import 'swiper/css';
 import './Categories.css'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import  {faFacebook,faTwitter,faSquareInstagram,faSquareXTwitter}  from '@fortawesome/free-brands-svg-icons'
+
+
 export default function Categories() {
 
 
@@ -28,8 +32,29 @@ export default function Categories() {
 
   return (
 
-  <div className='container'>
+<div className='categories'>
+<div className='container'>
+<div className='categories-header d-flex align-items-center'>
+  <div className='welcome row'>
+    
+  <div className='welcome-message col-6 my-auto p-5 d-flex flex-column align-items-center'> 
+  <p><span className='fs-1 text-danger'>Welcome</span> to our online store!</p>
+  <p>We look forward to serving you.  You can now get all your favourite products delivered direct to your door</p>
+  <div className="social-mediaa d-flex justify-content-center gap-3 bg-white py-2 rounded-3 w-50">
 
+ <Link className="social-mediaa" theme="secondary" to="https://www.facebook.com"> <FontAwesomeIcon className='social-media-iconn social-media-icon1' icon={faFacebook} /></Link>
+<Link className="social-mediaa" theme="secondary" to="https://www.twitter.com"> <FontAwesomeIcon className='social-media-iconn social-media-icon2' icon={faTwitter} /> </Link>
+<Link className="social-mediaa" theme="secondary" to="https://www.instagram.com"><FontAwesomeIcon className='social-media-iconn social-media-icon3' icon={faSquareInstagram} /> </Link>
+<Link className="social-mediaa" theme="secondary" to="https://www.tiktok.com"><FontAwesomeIcon className='social-media-iconn social-media-icon4' icon={faSquareXTwitter} /> </Link>
+
+
+</div>
+  </div>
+  <div className=' col-6 p-5'>
+    <img src='/p2.JPG' className='img-fluid'/>
+  </div>
+  </div>
+</div>
   {
 data?.categories.length>0?  // data?.categories >>> means if the data object has data then get the property categories
   <> 
@@ -49,8 +74,8 @@ data?.categories.length>0?  // data?.categories >>> means if the data object has
     scrollbar={{ draggable: true }}
     onSwiper={(swiper) => console.log(swiper)}
     onSlideChange={() => console.log('slide change')}
-    // autoplay={{delay:1000}}
-    // loop={true}
+     autoplay={{delay:1000}}
+     loop={true}
     
   >
     {
@@ -58,7 +83,7 @@ data?.categories.length>0?  // data?.categories >>> means if the data object has
   return(
     <SwiperSlide key={index} className='text-center'>
       <Link to={`/products/category/${category._id}`}>
-    <h2 >{category.name}</h2>
+  
     <img src={category.image.secure_url} alt="category image"/>
     </Link>
     </SwiperSlide>
@@ -73,6 +98,8 @@ data?.categories.length>0?  // data?.categories >>> means if the data object has
 <h2>no categories found</h2>
 
 }
+</div>
+
 </div>
   )
 }

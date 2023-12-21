@@ -42,6 +42,33 @@ const LoginSchemaValidation=yup.object(
     }
   
   );
-export {RegisterSchemaValidation,LoginSchemaValidation,sendCodeSchemaValidation,setPasswordSchemaValidation,createOrderSchemaValidation} 
+
+  const createReviewSchemaValidation=yup.object(
+    {
+      comment:yup.string().required('comment is required').min(3,'must be at least 3 characters').max(30,'must be 30 characters or less'),
+      rating:yup.number().required('rating is required')
+    }
+  
+  );
+
+  const searchSchemaValidation=yup.object(
+    {
+      search:yup.string().required('type something').max(15,'must be at least 15 characters'),
+      
+    }
+  
+  );
+  const filterSchemaValidation=yup.object(
+    {
+       priceFrom:yup.number(),
+       priceTo:yup.number()
+
+    }
+  
+  );
+export {RegisterSchemaValidation,LoginSchemaValidation,sendCodeSchemaValidation,
+  setPasswordSchemaValidation,createOrderSchemaValidation,
+  createReviewSchemaValidation,searchSchemaValidation,
+  filterSchemaValidation} 
 
 
